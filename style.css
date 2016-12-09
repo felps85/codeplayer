@@ -31,6 +31,7 @@
        padding: 6px;
        border-right: none;
        font-size: 90%;
+       cursor: pointer;
     }
 
     #HTML {
@@ -45,11 +46,13 @@
     }
 
     .active {
-        color: #c98f5f;
+        color: #1c1f24;
+        background-color: #a2a3a4;
     }
 
     .highlightedButton {
-        background-color: grey;
+        background-color: #c98f5f;
+        color: #1c1f24;
     }
 
     textarea {
