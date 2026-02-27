@@ -1,78 +1,177 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap");
 
-    body{
-        font-family: sans-serif;
-        padding: 0;
-        margin: 0;
-    }
+:root {
+  --bg: #0d0f12;
+  --surface: #12151a;
+  --surface-2: #171b21;
+  --text: #e7eaee;
+  --muted: #8f98a5;
+  --border: #262c36;
+  --border-strong: #39404c;
+}
 
-    #header {
-        width: 100%;
-        background-color: #1c1f24;
-        padding: 5px;
-        height: 30px;
-        color: #a2a3a4;
-    }
+* {
+  box-sizing: border-box;
+}
 
-    #logo {
-        float: left;
-        font-weight: bold;
-        font-size: 120%;
-        padding: 3px 5px;
-    }
+html,
+body {
+  margin: 0;
+  height: 100%;
+  font-family: "IBM Plex Sans", "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
 
-    #buttonContainer {
-        width: 233px;
-        margin: 0 auto;
-    }
+.appShell {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+}
 
-   .toggleButton {
-       float: left;
-       border: 1px solid black;
-       padding: 6px;
-       border-right: none;
-       font-size: 90%;
-       cursor: pointer;
-    }
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  align-items: center;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  padding: 10px;
+}
 
-    #HTML {
-        border-top-left-radius: 4px;
-        border-bottom-left-radius: 4px;
-    }
+.brand h1 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
 
-    #output {
-        border-top-right-radius: 4px;
-        border-bottom-right-radius: 4px;
-        border-right: 1px solid grey;
-    }
+.controls {
+  display: flex;
+  align-items: center;
+}
 
-    .active {
-        color: #1c1f24;
-        background-color: #a2a3a4;
-    }
+.buttonRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: flex-end;
+}
 
-    .highlightedButton {
-        background-color: #c98f5f;
-        color: #1c1f24;
-    }
+.toggleButton,
+.panelAction {
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  color: var(--muted);
+  border-radius: 8px;
+  padding: 6px 10px;
+  font: inherit;
+  font-size: 0.82rem;
+  cursor: pointer;
+}
 
-    textarea {
-        resize: none;
-        border-top: none;
-        background-color: #22252c;
-        color: #a2a3a4;
-        border-color: grey;
-    }
+.toggleButton:hover,
+.panelAction:hover {
+  border-color: var(--border-strong);
+  color: var(--text);
+}
 
-    .panel {
-        float: left;
-        width: 50%;
-        border-left: none;
-    }
+.toggleButton.active {
+  color: var(--text);
+  border-color: var(--border-strong);
+  background: #1e242d;
+}
 
-    iframe {
-        border: none;
-    }
+.panelGrid {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  gap: 10px;
+}
 
-    .hidden {
-        display: none;
-    }
+.panel {
+  min-width: 0;
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--surface);
+}
+
+.panelHeader {
+  height: 38px;
+  flex-shrink: 0;
+  border-bottom: 1px solid var(--border);
+  background: #111419;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 10px;
+}
+
+.panelHeader span {
+  font-size: 0.8rem;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.editorMount,
+#previewFrame {
+  flex: 1;
+  min-height: 0;
+}
+
+.editorPanel .CodeMirror {
+  height: 100%;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.CodeMirror {
+  font-family: "JetBrains Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+}
+
+#previewFrame {
+  border: 0;
+  background: #fff;
+  width: 100%;
+}
+
+.hidden {
+  display: none;
+}
+
+.panel:fullscreen {
+  border-radius: 0;
+  border: 0;
+}
+
+.panel:fullscreen .panelHeader {
+  height: 46px;
+  padding: 0 14px;
+}
+
+@media (max-width: 700px) {
+  .appShell {
+    padding: 8px;
+  }
+
+  .topbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .controls {
+    align-items: stretch;
+  }
+
+  .buttonRow {
+    justify-content: flex-start;
+  }
+}

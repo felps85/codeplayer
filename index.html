@@ -1,41 +1,70 @@
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-
-    <title>jQuery</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <script
-    src="https://code.jquery.com/jquery-3.1.1.min.js"
-    integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-    crossorigin="anonymous"></script>
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CodePlayer</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/codemirror.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/theme/material-darker.min.css" />
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
+  <main class="appShell">
+    <header class="topbar">
+      <div class="brand">
+        <h1>CodePlayer</h1>
+      </div>
 
-    <div id="header">
-        <div id="logo">
-
-            CodePlayer
-
+      <div class="controls">
+        <div class="buttonRow" role="tablist" aria-label="Toggle panels">
+          <button class="toggleButton active" id="html" type="button">HTML</button>
+          <button class="toggleButton active" id="css" type="button">CSS</button>
+          <button class="toggleButton active" id="javascript" type="button">JS</button>
+          <button class="toggleButton active" id="output" type="button">Output</button>
         </div>
-        <div id="buttonContainer">
+      </div>
+    </header>
 
-            <div class="toggleButton active" id="html">HTML</div>
-            <div class="toggleButton" id="css">CSS</div>
-            <div class="toggleButton" id="javascript">JavaScript</div>
-            <div class="toggleButton active" id="output">Output</div>
+    <section id="bodyContainer" class="panelGrid">
+      <section id="htmlPanel" class="panel editorPanel" aria-label="HTML editor">
+        <header class="panelHeader">
+          <span>HTML</span>
+          <button class="panelAction" type="button" data-fullscreen="html">Full screen</button>
+        </header>
+        <div id="htmlEditor" class="editorMount"></div>
+      </section>
 
-        </div>
-    </div>
-    <div id="bodyContainer">
+      <section id="cssPanel" class="panel editorPanel" aria-label="CSS editor">
+        <header class="panelHeader">
+          <span>CSS</span>
+          <button class="panelAction" type="button" data-fullscreen="css">Full screen</button>
+        </header>
+        <div id="cssEditor" class="editorMount"></div>
+      </section>
 
-        <textarea id="htmlPanel" class="panel"><p id="paragraph">Hello world</p></textarea>
-        <textarea id="cssPanel" class="panel hidden">p {color: green;}</textarea>
-        <textarea id="javascriptPanel" class="panel hidden">document.getElementById("paragraph").innerHTML = "Hello you";</textarea>
-        <iframe sandbox="allow-same-origin allow-scripts allow-popups allow-forms" id="outputPanel" class="panel"></iframe>
+      <section id="javascriptPanel" class="panel editorPanel" aria-label="JavaScript editor">
+        <header class="panelHeader">
+          <span>JavaScript</span>
+          <button class="panelAction" type="button" data-fullscreen="javascript">Full screen</button>
+        </header>
+        <div id="javascriptEditor" class="editorMount"></div>
+      </section>
 
-    </div>
-    <script type="text/javascript" src="app.js"></script>
+      <section id="outputPanel" class="panel outputPanel" aria-label="Output preview">
+        <header class="panelHeader">
+          <span>Output</span>
+          <button class="panelAction" type="button" data-fullscreen="output">Full screen</button>
+        </header>
+        <iframe sandbox="allow-same-origin allow-scripts allow-popups allow-forms" id="previewFrame" title="Output preview"></iframe>
+      </section>
+    </section>
+  </main>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/codemirror.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/mode/xml/xml.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/mode/javascript/javascript.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/mode/css/css.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/mode/htmlmixed/htmlmixed.min.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
